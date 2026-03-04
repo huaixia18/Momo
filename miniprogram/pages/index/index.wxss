@@ -1,0 +1,118 @@
+.container {
+  padding: 24rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  box-shadow: 0 8rpx 20rpx rgba(139, 95, 255, 0.12);
+}
+
+.title {
+  font-size: 30rpx;
+  font-weight: 700;
+  margin-bottom: 16rpx;
+}
+
+.name-input,
+.text-area {
+  width: 100%;
+  border: 2rpx solid #e2d9ff;
+  border-radius: 14rpx;
+  padding: 14rpx;
+  box-sizing: border-box;
+  margin-bottom: 12rpx;
+}
+
+.text-area {
+  min-height: 140rpx;
+}
+
+.pet-row,
+.mode-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.pet-btn,
+.mode-btn {
+  font-size: 24rpx;
+  border-radius: 999rpx;
+  background: #f3efff;
+  color: #5e4db2;
+}
+
+.pet-btn.active,
+.mode-btn.active {
+  background: #8e62ff;
+  color: #fff;
+}
+
+.main-btn,
+.feed-btn,
+.minor-btn {
+  color: #fff;
+  border-radius: 14rpx;
+  font-weight: 700;
+}
+
+.main-btn,
+.feed-btn {
+  background: linear-gradient(90deg, #ff4ecf 0%, #00d18f 100%);
+}
+
+.minor-btn {
+  margin-top: 8rpx;
+  background: #7a67d9;
+}
+
+.food-card {
+  margin-top: 14rpx;
+  border-radius: 14rpx;
+  padding: 14rpx;
+  border: 2rpx dashed #b9a5ff;
+}
+
+.food-name {
+  font-weight: 700;
+  margin-bottom: 8rpx;
+}
+
+.food-desc {
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.rarity-SR {
+  box-shadow: 0 0 0 4rpx rgba(87, 164, 255, 0.15);
+}
+
+.rarity-SSR {
+  box-shadow: 0 0 0 4rpx rgba(255, 180, 28, 0.22);
+}
+
+.reply {
+  margin-top: 12rpx;
+  color: #4b3ea7;
+  font-weight: 600;
+}
+
+.log-item {
+  margin-bottom: 6rpx;
+  font-size: 24rpx;
+}
+
+.diary {
+  margin-top: 12rpx;
+  color: #3d3477;
+  line-height: 1.6;
+}
+
+.muted {
+  color: #999;
+}

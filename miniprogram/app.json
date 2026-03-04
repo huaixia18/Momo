@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "MOMO 情绪饲养员",
+    "navigationBarBackgroundColor": "#f9f4ff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f9f4ff",
+    "backgroundTextStyle": "light"
+  }
+}
