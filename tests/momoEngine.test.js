@@ -5,11 +5,9 @@ const {
   createFoodCard,
   pickReply,
   applyFeedStats,
-  rewardCrystals,
   decayHunger,
   generateDiary,
   getMoodLabel,
-  purchaseAccessory,
 } = require('../miniprogram/utils/momoEngine');
 
 function testDetectEmotion() {
@@ -38,22 +36,6 @@ function testReplyAndStats() {
 
   const next = applyFeedStats({ hunger: 90, bond: 96, mood: 50 }, 'positive');
   assert.deepStrictEqual(next, { hunger: 100, bond: 100, mood: 58 });
-}
-
-function testCrystalReward() {
-  assert.strictEqual(rewardCrystals('R', 'neutral'), 1);
-  assert.strictEqual(rewardCrystals('SR', 'positive'), 3);
-  assert.strictEqual(rewardCrystals('SSR', 'positive'), 5);
-}
-
-function testPurchaseAccessory() {
-  const fail = purchaseAccessory({ crystals: 1, owned: [] }, 'glass');
-  assert.strictEqual(fail.ok, false);
-
-  const ok = purchaseAccessory({ crystals: 10, owned: [] }, 'glass');
-  assert.strictEqual(ok.ok, true);
-  assert.strictEqual(ok.crystals, 2);
-  assert.ok(ok.owned.includes('glass'));
 }
 
 function testDecay() {
@@ -90,8 +72,6 @@ function run() {
   testRarity();
   testDeterministicFoodCard();
   testReplyAndStats();
-  testCrystalReward();
-  testPurchaseAccessory();
   testDecay();
   testMoodLabel();
   testDiary();

@@ -18,13 +18,6 @@
   margin-bottom: 16rpx;
 }
 
-.meta,
-.crystal {
-  margin-top: 10rpx;
-  color: #5e4db2;
-  font-weight: 600;
-}
-
 .name-input,
 .text-area {
   width: 100%;
@@ -62,8 +55,7 @@
 
 .main-btn,
 .feed-btn,
-.minor-btn,
-.reset-btn {
+.minor-btn {
   color: #fff;
   border-radius: 14rpx;
   font-weight: 700;
@@ -77,10 +69,6 @@
 .minor-btn {
   margin-top: 8rpx;
   background: #7a67d9;
-}
-
-.reset-btn {
-  background: #af2336;
 }
 
 .food-card {
@@ -112,16 +100,6 @@
   margin-top: 12rpx;
   color: #4b3ea7;
   font-weight: 600;
-}
-
-.shop-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12rpx;
-  padding: 10rpx;
-  border: 2rpx solid #ece6ff;
-  border-radius: 12rpx;
 }
 
 .log-item {

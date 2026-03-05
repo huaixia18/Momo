@@ -59,12 +59,6 @@ const FOOD_CATALOG = {
   ],
 };
 
-const ACCESSORY_SHOP = [
-  { id: 'bow', name: '蝴蝶结', cost: 5 },
-  { id: 'glass', name: '墨镜', cost: 8 },
-  { id: 'crown', name: '小王冠', cost: 12 },
-];
-
 function hashCode(text = '') {
   return String(text)
     .split('')
@@ -138,11 +132,6 @@ function applyFeedStats(prevStats = {}, emotion = 'neutral') {
   };
 }
 
-function rewardCrystals(rarity = 'R', emotion = 'neutral') {
-  const base = rarity === 'SSR' ? 4 : rarity === 'SR' ? 2 : 1;
-  const bonus = emotion === 'positive' ? 1 : 0;
-  return base + bonus;
-}
 
 function getMoodLabel(mood = 50) {
   const value = Math.max(0, Math.min(100, Number(mood) || 0));
@@ -185,41 +174,17 @@ function generateDiary({ mbtiType = 'ENFP', petName = 'MOMO', logs = [] } = {}) 
   return `今天我是${petName}，以${pet.diaryTone}的心情记录你的一天：${events}谢谢你愿意把情绪交给我，我们明天也一起加油。`;
 }
 
-function purchaseAccessory({ crystals = 0, owned = [] } = {}, accessoryId) {
-  const item = ACCESSORY_SHOP.find((it) => it.id === accessoryId);
-  if (!item) {
-    return { ok: false, message: '配饰不存在', crystals, owned };
-  }
-  if (owned.includes(accessoryId)) {
-    return { ok: false, message: '已拥有该配饰', crystals, owned };
-  }
-  if (crystals < item.cost) {
-    return { ok: false, message: '情绪结晶不足', crystals, owned };
-  }
-
-  return {
-    ok: true,
-    message: `已解锁${item.name}`,
-    crystals: crystals - item.cost,
-    owned: [...owned, accessoryId],
-    unlocked: item,
-  };
-}
-
 module.exports = {
   PET_PROFILES,
   FOOD_CATALOG,
-  ACCESSORY_SHOP,
   detectEmotion,
   calculateRarity,
   mapFood,
   createFoodCard,
   pickReply,
   applyFeedStats,
-  rewardCrystals,
   decayHunger,
   buildFeedLogEntry,
   generateDiary,
   getMoodLabel,
-  purchaseAccessory,
 };
