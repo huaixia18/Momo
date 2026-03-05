@@ -1,0 +1,76 @@
+<view class="container">
+  <view class="card">
+    <view class="title">1. 领养 MOMO</view>
+    <input class="name-input" placeholder="给宠物起个名字" value="{{petName}}" bindinput="onNameInput" />
+
+    <view class="pet-row">
+      <block wx:for="{{petOptions}}" wx:key="key">
+        <button class="pet-btn {{selectedMbti === item.key ? 'active' : ''}}" data-type="{{item.key}}" bindtap="onSelectPet">
+          {{item.label}}
+        </button>
+      </block>
+    </view>
+    <view class="meta">已装备：{{equippedAccessory}}</view>
+  </view>
+
+  <view class="card">
+    <view class="title">2. 情绪料理厨房</view>
+
+    <view class="mode-row">
+      <button class="mode-btn {{inputMode === 'text' ? 'active' : ''}}" data-mode="text" bindtap="onSwitchMode">文本模式</button>
+      <button class="mode-btn {{inputMode === 'image' ? 'active' : ''}}" data-mode="image" bindtap="onSwitchMode">图片模式（占位）</button>
+    </view>
+
+    <textarea
+      class="text-area"
+      maxlength="300"
+      placeholder="{{inputMode === 'text' ? '输入吐槽或开心瞬间...' : '描述图片内容，例如：自拍、落日、工位咖啡'}}"
+      bindinput="onTextInput"
+      value="{{userInput}}"
+    />
+    <button class="main-btn" bindtap="onGenerateFood">生成料理卡片</button>
+
+    <view wx:if="{{foodCard}}" class="food-card rarity-{{foodCard.rarity}}">
+      <view class="food-name">{{foodCard.foodName}}（{{foodCard.rarity}}）</view>
+      <view class="food-desc">{{foodCard.description}}</view>
+      <button class="feed-btn" bindtap="onFeed">投喂 {{petName}}</button>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="title">3. MOMO 状态</view>
+    <view>饱食度：{{stats.hunger}}</view>
+    <view>亲密度：{{stats.bond}}</view>
+    <view>心情值：{{stats.mood}}（{{moodLabel}}）</view>
+    <view class="crystal">情绪结晶：{{crystals}}</view>
+    <button class="minor-btn" bindtap="onSimulateTimePass">模拟时间流逝（3小时）</button>
+    <view wx:if="{{lastReply}}" class="reply">{{lastReply}}</view>
+  </view>
+
+  <view class="card">
+    <view class="title">4. 配饰商店</view>
+    <view class="muted">已拥有：{{ownedAccessories.length}} 个</view>
+    <block wx:for="{{accessoryShop}}" wx:key="id">
+      <view class="shop-item">
+        <view>{{item.name}}（{{item.cost}} 结晶）</view>
+        <button class="minor-btn" data-id="{{item.id}}" bindtap="onBuyAccessory">购买</button>
+      </view>
+    </block>
+  </view>
+
+  <view class="card">
+    <view class="title">5. 喂食记录（最近 8 条）</view>
+    <view wx:if="{{!feedLogs.length}}" class="muted">还没有记录，先做一份料理吧。</view>
+    <block wx:for="{{feedLogs}}" wx:key="ts">
+      <view class="log-item">- {{item.foodName}} / {{item.emotion}} / {{item.rarity}}</view>
+    </block>
+  </view>
+
+  <view class="card">
+    <view class="title">6. MOMO 观察日记</view>
+    <button class="main-btn" bindtap="onGenerateDiary">生成观察日记</button>
+    <view wx:if="{{diaryText}}" class="diary">{{diaryText}}</view>
+  </view>
+
+  <button class="reset-btn" bindtap="onResetProgress">重置本地进度</button>
+</view>
